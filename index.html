@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sitio simple</title>
+    <style>
+        #textBox, #displayBox {
+            width: 300px;
+            height: 50px;
+            font-size: 20px;
+            padding: 10px;
+            margin: 20px;
+        }
+    </style>
+</head>
+<body>
+    <input type="text" id="textBox" placeholder="Escribe algo...">
+    <button id="enterButton">Enviar</button>
+    <button id="colorButton">Cambiar Color</button>
+    <input type="text" id="displayBox">
+
+    <script>
+        const textBox = document.getElementById('textBox');
+        const displayBox = document.getElementById('displayBox');
+        const enterButton = document.getElementById('enterButton');
+        const colorButton = document.getElementById('colorButton');
+        
+        let colorIndex = 0;
+        const colors = [
+            { background: 'white', color: 'black' },
+            { background: 'black', color: 'white' },
+            { background: 'lightblue', color: 'red' }
+        ];
+
+        enterButton.addEventListener('click', function() {
+            displayBox.value = textBox.value; // Muestra el texto en la nueva caja
+        });
+
+        colorButton.addEventListener('click', function() {
+            colorIndex = (colorIndex + 1) % colors.length;
+            const currentColors = colors[colorIndex];
+            displayBox.style.backgroundColor = currentColors.background;
+            displayBox.style.color = currentColors.color;
+        });
+    </script>
+</body>
+</html>
